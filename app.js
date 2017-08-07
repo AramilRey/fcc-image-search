@@ -12,7 +12,7 @@ const query = require('./models/query');
 
 app.use(koaBody());
 
-router.get('/', async ctx => ctx.body = await query.find({}).select('-__v -_id'));
+router.get('/', async ctx => ctx.body = await query.find({}).select('-__v -_id').limit(10).sort('-when'));
 router.get('/:search', search);
 
 app.use(router.routes());
